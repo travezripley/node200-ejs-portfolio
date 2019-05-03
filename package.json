@@ -4,7 +4,8 @@
   "description": "My Personal Porfolio",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test",
+    "start": "node server.js"
   },
   "repository": {
     "type": "git",
@@ -17,9 +18,16 @@
   },
   "homepage": "https://github.com/travezripley/node200-ejs-portfolio#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "body-parser": "^1.19.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "dotenv": "^8.0.0",
     "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "morgan": "^1.9.1"
+    "mailchimp-api-v3": "^1.13.0",
+    "mocha": "^6.1.4",
+    "morgan": "^1.9.1",
+    "request": "^2.88.0"
   }
 }
