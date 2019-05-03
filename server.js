@@ -4,10 +4,8 @@ const morgan = require("morgan");
 const bodyParser = require("body-parser");
 require("dotenv").config();
 
-
-const Mailchimp = require('mailchimp-api-v3');
+const Mailchimp = require("mailchimp-api-v3");
 const mailchimp = new Mailchimp(process.env.MAILCHIMP_API_KEY);
-
 
 const app = express();
 
@@ -31,38 +29,47 @@ app.get("/contact", (req, res) => {
 });
 
 app.post("/thanks", (req, res) => {
-
   console.log(req.body);
 
   const { firstName, lastName, email } = req.body;
 
   const data = {
-      members: [
-        {
-          email_address: email,
-          status: "subscribed",
-          merge_fields: {
-            FNAME: firstName,
-            LNAME: lastName
-          }
+    members: [
+      {
+        email_address: email,
+        status: "subscribed",
+        merge_fields: {
+          FNAME: firstName,
+          LNAME: lastName
         }
-      ]
-  }
+      }
+    ]
+  };
   const postData = JSON.stringify(data);
 
-  mailchimp.post('/lists/a06f7fee47/members', data)
-  .then(function(results) {
-  
-  })
-  .catch(function (err) {
+  const options = {
+    url: "https://us20.api.mailchimp.com/3.0/lists/a06f7fee47/members",
+    method: "POST",
+    headers: {
+      Authorization: process.env.HEROKU_API_KEY
+    },
+    body: postData
+  };
 
-  })
-
-  res.render("thanks", { contact: req.body });
+  request(options, (err, response, body) => {
+    if (err) {
+      console.log("error");
+    } else {
+      if (response.statusCode === 200) {
+        res.render("thanks", { contact: req.body });
+      } else {
+        console.log("error");
+      }
+    }
+  });
 });
 
 app.listen(PORT, () => {
-  console.log("listening at http://localhost:8080");
-});
+  console.log("listening at http://localhost:8080")
+})
 
-module.exports = app;
