@@ -45,10 +45,11 @@ app.post("/thanks", (req, res) => {
       }
     ]
   };
+
   const postData = JSON.stringify(data);
 
   const options = {
-    url: "https://us20.api.mailchimp.com/3.0/lists/a06f7fee47/members",
+    url: "https://us20.api.mailchimp.com/3.0/lists/a06f7fee47 ",
     method: "POST",
     headers: {
       Authorization: process.env.HEROKU_API_KEY
@@ -69,7 +70,4 @@ app.post("/thanks", (req, res) => {
   });
 });
 
-app.listen(PORT, () => {
-  console.log("listening at http://localhost:8080")
-})
-
+app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
