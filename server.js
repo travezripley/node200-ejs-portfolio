@@ -5,7 +5,7 @@ const bodyParser = require("body-parser");
 require("dotenv").config();
 
 const Mailchimp = require("mailchimp-api-v3");
-const mailchimp = new Mailchimp(process.env.MAILCHIMP_API_KEY); 
+const mailchimp = new Mailchimp(process.env.MAILCHIMP_API_KEY);
 
 const app = express();
 
@@ -28,8 +28,7 @@ app.get("/contact", (req, res) => {
   res.render("contact");
 });
 
-app.post('/thanks', (req, res) => {
-  
+app.post("/thanks", (req, res) => {
   console.log(req.body);
 
   const { firstName, lastName, email } = req.body;
@@ -43,11 +42,12 @@ app.post('/thanks', (req, res) => {
     }
   };
 
-  mailchimp.post("lists/a06f7fee47/members", data)
-    .then( result => {
-      res.render("thanks", {contact: req.body});
+  mailchimp
+    .post("lists/a06f7fee47/members", data)
+    .then(result => {
+      res.render("thanks", { contact: req.body });
     })
-    .catch(err => console.log (err));
+    .catch(err => console.log(err));
 
   // const options = {
   //   url: "https://us20.api.mailchimp.com/3.0/lists/a06f7fee47/members ",
