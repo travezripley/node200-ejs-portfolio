@@ -44,8 +44,8 @@ app.post('/thanks', (req, res) => {
   };
 
   mailchimp.post("lists/a06f7fee47/members", data)
-    .then( res => {
-      res.render("thanks", {data: req.body});
+    .then( result => {
+      res.render("thanks", {contact: req.body});
     })
     .catch(err => console.log (err));
 
