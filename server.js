@@ -47,28 +47,28 @@ app.post('/thanks', (req, res) => {
     .then( res => {
       res.render("thanks", {data: req.body});
     })
-    .catch
+    .catch(err => console.log (err));
 
-  const options = {
-    url: "https://us20.api.mailchimp.com/3.0/lists/a06f7fee47/members ",
-    method: "POST",
-    headers: {
-      Authorization: process.env.MAILCHIMP_API_KEY
-    },
-    body: JSON.stringify(data)
-  };
+  // const options = {
+  //   url: "https://us20.api.mailchimp.com/3.0/lists/a06f7fee47/members ",
+  //   method: "POST",
+  //   headers: {
+  //     Authorization: process.env.MAILCHIMP_API_KEY
+  //   },
+  //   body: JSON.stringify(data)
+  // };
 
-  request(options, (err, response, body) => {
-    if (err) {
-      console.log("error 1", err );
-    } else {
-      if (response.statusCode === 201) {
-        res.render("thanks", { contact: req.body });
-      } else {
-        console.log("error2", response.statusCode);
-      }
-    }
-  });
+  // request(options, (err, response, body) => {
+  //   if (err) {
+  //     console.log("error 1", err );
+  //   } else {
+  //     if (response.statusCode === 201) {
+  //       res.render("thanks", { contact: req.body });
+  //     } else {
+  //       console.log("error2", response.statusCode);
+  //     }
+  //   }
+  // });
 });
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
