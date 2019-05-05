@@ -1,25 +1,24 @@
 const chai = require("chai");
-const chaiHTTP = require("chai-http");
+const chaiHttp = require("chai-http");
 const server = require("../server");
 
-chai.use(chaiHTTP);
-
+chai.use(chaiHttp);
 const expect = chai.expect;
 
-app.listen(4000);
 
 describe("server.js", function() {
   this.timeout(5000);
-  beforeEach(done => {
-    done();
-  });
-  afterEach(done => {
+  beforeEach((done) => {
     done();
   });
 
-  it("responds to /", done => {
+  afterEach((done) => {
+    done();
+  });
+
+  it("responds to /", (done) => {
     chai
-      .request(app)
+      .request(server)
       .get("/")
       .end((err, res) => {
         expect(err).not.exist;
@@ -27,4 +26,5 @@ describe("server.js", function() {
         done();
       });
   });
+
 });
