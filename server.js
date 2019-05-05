@@ -73,4 +73,4 @@ app.post("/thanks", (req, res) => {
 
 app.listen(PORT, () => console.log(`Server started on port ${PORT}`));
 
-module.exports.default = app;
+module.exports = app;
