@@ -62,7 +62,7 @@ app.post("/thanks", (req, res) => {
   //   if (err) {
   //     console.log("error 1", err );
   //   } else {
-  //     if (response.statusCode === 201) {
+  //     if (response.statusCode === 200) {
   //       res.render("thanks", { contact: req.body });
   //     } else {
   //       console.log("error2", response.statusCode);
