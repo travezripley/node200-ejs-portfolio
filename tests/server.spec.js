@@ -18,7 +18,7 @@ describe("server.js", function() {
 
   it("responds to /", (done) => {
     chai
-      .request(server)
+      .request('http://localhost:8080')
       .get("/")
       .end((err, res) => {
         expect(err).not.exist;
