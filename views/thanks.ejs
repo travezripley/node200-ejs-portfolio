@@ -4,14 +4,29 @@
     <% include ./partials/header %>
   </head>
 
-  <h2>Thanks</h2>
+  <body id="page-top">
+    <!-- Navigation-->
+    <% include ./partials/navmenu %>
 
-  <body>
     <div></div>
-    Thank you <%= contact.firstName %> <%=contact.lastName %>. 
-    
-    <% include ./partials/footer %>
 
-  </div>
+    <section class="bg-primary text-white mb-0" id="about">
+      <div class="container">
+        <h2 class="text-center text-uppercase text-white">
+          Thanks, Hawt Stuff!
+        </h2>
+        <hr class="star-light mb-5" />
+        <div class="row">
+          <div class="col-lg-8">
+            <p class="lead">
+              Thank you <%= contact.firstName %> <%=contact.lastName %>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!--Footer-->
+    <% include ./partials/footer %>
   </body>
 </html>
